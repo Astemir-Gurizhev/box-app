@@ -1,4 +1,5 @@
 import { QuestionButtonProps } from '../../types/types'
+import { Spinner } from '../../ui/Spinner'
 
 export const QuestionButton = ({
 	question,
@@ -7,7 +8,13 @@ export const QuestionButton = ({
 }: QuestionButtonProps) => {
 	return (
 		<button onClick={onClick} disabled={isLoading}>
-			{isLoading ? 'Загрузка...' : question}
+			{isLoading ? (
+				<span>
+					Загрузка <Spinner />
+				</span>
+			) : (
+				question
+			)}
 		</button>
 	)
 }

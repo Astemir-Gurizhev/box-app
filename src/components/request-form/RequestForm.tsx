@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { fetchChatResponse } from '../../api/api'
 import { clearSymbols, russianRequest, task } from '../../data/data'
+import { Spinner } from '../../ui/Spinner'
 import { QuestionList } from '../question-list/QuestionList'
 
 export const RequestForm = () => {
@@ -56,7 +57,13 @@ export const RequestForm = () => {
 		<>
 			<h2>{task}</h2>
 			<button onClick={handleCreateQuestions} disabled={loadingQuestions}>
-				{loadingQuestions ? 'Загрузка...' : 'Показать подсказки'}
+				{loadingQuestions ? (
+					<span>
+						Загрузка <Spinner />
+					</span>
+				) : (
+					'Показать подсказки'
+				)}
 			</button>
 			<QuestionList
 				questions={textQuestion}
