@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { fetchChatResponse } from '../../api/api'
 import { clearSymbols, russianRequest, task } from '../../data/data'
+import { QuestionList } from '../question-list/QuestionList'
 
 export const RequestForm = () => {
 	const [textQuestion, setTextQuestion] = useState<string[]>([])
@@ -8,8 +9,11 @@ export const RequestForm = () => {
 	const [selectedQuestionIndex, setSelectedQuestionIndex] = useState<
 		number | null
 	>(null)
+	const [loadingIndex, setLoadingIndex] = useState<number | null>(null)
+	const [loadingQuestions, setLoadingQuestions] = useState<boolean>(false)
 
 	const handleCreateQuestions = async () => {
+		setLoadingQuestions(true)
 		const data = await fetchChatResponse(
 			russianRequest +
 				clearSymbols +
@@ -19,6 +23,7 @@ export const RequestForm = () => {
 
 		setTextQuestion(data)
 		setTextResponse([])
+		setLoadingQuestions(false)
 	}
 
 	const handleGettingResponses = async (index: number) => {
@@ -26,6 +31,8 @@ export const RequestForm = () => {
 			setSelectedQuestionIndex(null)
 			return
 		}
+
+		setLoadingIndex(index)
 
 		const question = textQuestion[index]
 		const data = await fetchChatResponse(
@@ -42,28 +49,22 @@ export const RequestForm = () => {
 			return newResponses
 		})
 		setSelectedQuestionIndex(index)
+		setLoadingIndex(null)
 	}
 
 	return (
 		<>
 			<h2>{task}</h2>
-			<button onClick={handleCreateQuestions}>Показать подсказки</button>
-			<div>
-				{textQuestion.length > 0
-					? textQuestion.map((item, i) => {
-							return (
-								<div key={i}>
-									<button onClick={() => handleGettingResponses(i)}>
-										{item}
-									</button>
-									{selectedQuestionIndex === i && textResponse[i] && (
-										<p>{textResponse[i]}</p>
-									)}
-								</div>
-							)
-					  })
-					: ''}
-			</div>
+			<button onClick={handleCreateQuestions} disabled={loadingQuestions}>
+				{loadingQuestions ? 'Загрузка...' : 'Показать подсказки'}
+			</button>
+			<QuestionList
+				questions={textQuestion}
+				loadingIndex={loadingIndex}
+				onQuestionClick={handleGettingResponses}
+				selectedQuestionIndex={selectedQuestionIndex}
+				textResponse={textResponse}
+			/>
 		</>
 	)
 }
