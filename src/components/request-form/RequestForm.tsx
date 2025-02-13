@@ -17,7 +17,7 @@ export const RequestForm = () => {
 
 	return (
 		<>
-			<h2>Requst Form</h2>
+			<h2>Request Form</h2>
 			<form onSubmit={handleSubmit}>
 				<input
 					type='text'
