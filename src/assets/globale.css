@@ -50,6 +50,7 @@ p {
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	font-size: 16px;
 	line-height: 1.5;
+	max-width: 1000px;
 	margin: 10px 0;
 	transition: transform 0.3s, box-shadow 0.3s;
 }
