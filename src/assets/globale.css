@@ -4,12 +4,32 @@
 }
 
 body {
-	margin: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-width: 320px;
-	min-height: 100vh;
+	text-align: center;
+	background: linear-gradient(
+		135deg,
+		#6e7dff,
+		#4a90e2,
+		#f0f0f0
+	); /* Многоуровневый градиент */
+	background-size: 300% 300%; /* Увеличиваем размер фона для анимации */
+	animation: gradientAnimation 15s ease infinite; /* Анимация градиента */
+	font-family: 'Arial', sans-serif; /* Шрифт для всего документа */
+	min-height: 100vh; /* Минимальная высота для заполнения экрана */
+}
+
+@keyframes gradientAnimation {
+	0% {
+		background-position: 0% 50%; /* Начальная позиция */
+	}
+	50% {
+		background-position: 100% 50%; /* Позиция в середине */
+	}
+	100% {
+		background-position: 0% 50%; /* Конечная позиция */
+	}
 }
 
 h1 {
@@ -17,5 +37,55 @@ h1 {
 	line-height: 1.1;
 }
 
+h2 {
+	font-size: 3.2em;
+	line-height: 1.1;
+	color: white;
+	margin-bottom: 30px;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Тень текста */
+	background: linear-gradient(135deg, #6e7dff, #4a90e2); /* Градиентный фон */
+	-webkit-background-clip: text; /* Для градиента текста */
+}
 
+p {
+	background: linear-gradient(135deg, #f0f0f0, #e0e0e0); /* Градиентный фон */
+	color: #333; /* Цвет текста */
+	padding: 20px; /* Отступы */
+	border-radius: 10px; /* Закругленные углы */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень */
+	font-size: 16px; /* Размер шрифта */
+	line-height: 1.5; /* Высота строки */
+	margin: 10px 0; /* Отступы сверху и снизу */
+	transition: transform 0.3s, box-shadow 0.3s; /* Плавный переход */
+}
 
+p:hover {
+	transform: translateY(-2px); /* Подъем при наведении */
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Увеличение тени при наведении */
+}
+
+button {
+	background: linear-gradient(135deg, #6e7dff, #4a90e2); /* Градиентный фон */
+	border: none; /* Без границы */
+	color: white; /* Белый текст */
+	padding: 15px 30px; /* Отступы */
+	text-align: center; /* Центрирование текста */
+	text-decoration: none; /* Без подчеркивания */
+	display: inline-block; /* Блоковый элемент */
+	font-size: 16px; /* Размер шрифта */
+	margin: 10px 0; /* Отступы между кнопками */
+	cursor: pointer; /* Указатель при наведении */
+	border-radius: 25px; /* Закругленные углы */
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Тень */
+	transition: all 0.3s ease; /* Плавный переход */
+}
+
+button:hover {
+	transform: translateY(-3px); /* Подъем при наведении */
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Увеличение тени */
+}
+
+button:active {
+	transform: translateY(1px); /* Уменьшение при нажатии */
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Уменьшение тени */
+}
