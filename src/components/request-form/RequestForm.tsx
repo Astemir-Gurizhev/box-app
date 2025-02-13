@@ -67,7 +67,7 @@ export const RequestForm = () => {
 						Загрузка <Spinner />
 					</span>
 				) : (
-					'Показать подсказки'
+					'Сгенерировать вопросы'
 				)}
 			</button>
 			<QuestionList
