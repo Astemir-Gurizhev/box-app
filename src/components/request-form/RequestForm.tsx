@@ -3,6 +3,7 @@ import { fetchChatResponse } from '../../api/api'
 import { clearSymbols, russianRequest, task } from '../../data/data'
 import { Spinner } from '../../ui/Spinner'
 import { QuestionList } from '../question-list/QuestionList'
+import styles from './RequestForm.module.css'
 
 export const RequestForm = () => {
 	const [textQuestion, setTextQuestion] = useState<string[]>([])
@@ -56,7 +57,11 @@ export const RequestForm = () => {
 	return (
 		<>
 			<h2>{task}</h2>
-			<button onClick={handleCreateQuestions} disabled={loadingQuestions}>
+			<button
+				className={styles.btn}
+				onClick={handleCreateQuestions}
+				disabled={loadingQuestions}
+			>
 				{loadingQuestions ? (
 					<span>
 						Загрузка <Spinner />
