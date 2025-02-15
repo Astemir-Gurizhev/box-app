@@ -33,7 +33,7 @@ h1 {
 }
 
 h2 {
-	font-size: 3.2em;
+	font-size: 2.2em;
 	line-height: 1.1;
 	color: white;
 	margin-bottom: 30px;
@@ -43,6 +43,7 @@ h2 {
 }
 
 p {
+	text-align: center;
 	background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
 	color: #333;
 	padding: 20px;
@@ -50,7 +51,6 @@ p {
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	font-size: 16px;
 	line-height: 1.5;
-	max-width: 1000px;
 	margin: 10px 0;
 	transition: transform 0.3s, box-shadow 0.3s;
 }

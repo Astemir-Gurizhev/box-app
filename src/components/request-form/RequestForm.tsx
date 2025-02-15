@@ -19,7 +19,7 @@ export const RequestForm = () => {
 		const data = await fetchChatResponse(
 			russianRequest +
 				clearSymbols +
-				'Составь три актуальных вопроса по теории для задачи написанной дальше и создай его в виде массива [], где каждый отдельный элемент это один вопрос в виде строки "" и разделены запятыми без начального объяснения' +
+				'Составь три не одинаковых по смыслу ответа по вопросу и создай его в виде массива [], где каждый отдельный элемент это один вопрос в виде строки "" и разделены запятыми без начального объяснения' +
 				task
 		)
 
@@ -40,7 +40,7 @@ export const RequestForm = () => {
 		const data = await fetchChatResponse(
 			russianRequest +
 				clearSymbols +
-				'дай короткий ответ на вопрос: "' +
+				'дай короткое пояснение' +
 				question +
 				'"'
 		)
@@ -55,7 +55,7 @@ export const RequestForm = () => {
 	}
 
 	return (
-		<>
+		<div className={styles.container}>
 			<h2>{task}</h2>
 			<button
 				className={styles.btn}
@@ -67,7 +67,7 @@ export const RequestForm = () => {
 						Загрузка <Spinner />
 					</span>
 				) : (
-					'Сгенерировать вопросы'
+					'Сгенерировать ответы'
 				)}
 			</button>
 			<QuestionList
@@ -77,6 +77,6 @@ export const RequestForm = () => {
 				selectedQuestionIndex={selectedQuestionIndex}
 				textResponse={textResponse}
 			/>
-		</>
+		</div>
 	)
 }
