@@ -33,13 +33,15 @@ h1 {
 }
 
 h2 {
-	font-size: 2.2em;
+	
+	font-size: 2.0em;
 	line-height: 1.1;
 	color: white;
 	margin-bottom: 30px;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-	background: linear-gradient(135deg, #6e7dff, #4a90e2);
-	-webkit-background-clip: text;
+	background: linear-gradient(135deg, #6eafff, #4a90e2);
+	padding: 10px;
+	border-radius: 5px;
 }
 
 p {
@@ -78,10 +80,10 @@ span {
 	}
 }
 button {
-	background: linear-gradient(135deg, #6e7dff, #4a90e2);
+	background: linear-gradient(135deg, #6eafff, #4a90e2);
 	border: none;
 	color: white;
-	padding: 15px 30px;
+	padding: 10px 15px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;

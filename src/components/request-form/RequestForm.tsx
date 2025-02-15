@@ -4,6 +4,7 @@ import { clearSymbols, russianRequest, task } from '../../data/data'
 import { Spinner } from '../../ui/Spinner'
 import { QuestionList } from '../question-list/QuestionList'
 import styles from './RequestForm.module.css'
+import { TbProgressHelp } from 'react-icons/tb'
 
 export const RequestForm = () => {
 	const [textQuestion, setTextQuestion] = useState<string[]>([])
@@ -19,7 +20,7 @@ export const RequestForm = () => {
 		const data = await fetchChatResponse(
 			russianRequest +
 				clearSymbols +
-				'Составь три не одинаковых по смыслу ответа по вопросу и создай его в виде массива [], где каждый отдельный элемент это один вопрос в виде строки "" и разделены запятыми без начального объяснения' +
+				'Представь, что ты учитель. Какие 3 темы стоит предварительно изучить по вопросу и создай его в виде массива [], где каждый ответ является элементом в виде строки "" и разделен запятыми без начального объяснения' +
 				task
 		)
 
@@ -64,10 +65,10 @@ export const RequestForm = () => {
 			>
 				{loadingQuestions ? (
 					<span>
-						Загрузка <Spinner />
+						<Spinner />
 					</span>
 				) : (
-					'Сгенерировать ответы'
+					<TbProgressHelp />
 				)}
 			</button>
 			<QuestionList

@@ -1,5 +1,10 @@
 .container {
-	max-width: 1000px;
+	width: 1000px;
+	background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s, box-shadow 0.3s;
+	padding: 30px;
+	border-radius: 30px;
 }
 .btn {
 	font-size: 20px;
