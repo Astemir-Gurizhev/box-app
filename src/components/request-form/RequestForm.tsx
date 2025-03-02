@@ -1,10 +1,10 @@
 import { useState } from 'react'
+import { TbProgressHelp } from 'react-icons/tb'
 import { fetchChatResponse } from '../../api/api'
 import { clearSymbols, russianRequest, task } from '../../data/data'
-import { Spinner } from '../../ui/Spinner'
+import { Spinner } from '../../ui/spinner/Spinner'
 import { QuestionList } from '../question-list/QuestionList'
 import styles from './RequestForm.module.css'
-import { TbProgressHelp } from 'react-icons/tb'
 
 export const RequestForm = () => {
 	const [textQuestion, setTextQuestion] = useState<string[]>([])
@@ -39,11 +39,7 @@ export const RequestForm = () => {
 
 		const question = textQuestion[index]
 		const data = await fetchChatResponse(
-			russianRequest +
-				clearSymbols +
-				'дай пояснение' +
-				question +
-				'"'
+			russianRequest + clearSymbols + 'дай пояснение' + question + '"'
 		)
 
 		setTextResponse(prevResponses => {

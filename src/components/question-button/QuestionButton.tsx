@@ -1,5 +1,5 @@
 import { QuestionButtonProps } from '../../types/types'
-import { Spinner } from '../../ui/Spinner'
+import { Spinner } from '../../ui/spinner/Spinner'
 
 export const QuestionButton = ({
 	question,
