@@ -24,7 +24,12 @@ export const fetchChatResponse = async (message: string) => {
 		const response = await axios.post(url, data, config)
 		return response.data
 	} catch (error) {
-		console.error(error)
+		if (axios.isAxiosError(error)) {
+			console.error('Error response:', error.response)
+			console.error('Error message:', error.message)
+		} else {
+			console.error('Unexpected error:', error)
+		}
 		throw error
 	}
 }
