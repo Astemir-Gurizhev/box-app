@@ -4,7 +4,7 @@ import { fetchChatResponse } from '../../api/api'
 import { clearSymbols, russianRequest, task } from '../../data/data'
 import { Spinner } from '../../ui/spinner/Spinner'
 import { QuestionList } from '../question-list/QuestionList'
-import styles from './RequestForm.module.css'
+import styles from './RequestForm.module.scss'
 
 export const RequestForm = () => {
 	const [textQuestion, setTextQuestion] = useState<string[]>([])
