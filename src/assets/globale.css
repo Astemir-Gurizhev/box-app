@@ -40,8 +40,6 @@ p {
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	font-size: 16px;
 	line-height: 1.5;
-	margin: 10px 0;
-
 }
 
 span {
@@ -60,7 +58,6 @@ button {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	margin: 10px 0;
 	cursor: pointer;
 	border-radius: 25px;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);

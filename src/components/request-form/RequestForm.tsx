@@ -53,7 +53,8 @@ export const RequestForm = () => {
 
 	return (
 		<div className={styles.container}>
-			<h2>{task}</h2>
+			<img className={styles.taskImg} src="/math.webp" alt="" />
+			<h2 className={styles.task}>{task}</h2>
 			<button
 				className={styles.btn}
 				onClick={handleCreateQuestions}
