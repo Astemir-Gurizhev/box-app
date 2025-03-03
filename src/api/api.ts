@@ -1,35 +1,44 @@
-import axios from 'axios'
+import axios from 'axios';
+import { fetchOAuthToken } from './token'
 
-const url = '/api/api/chat'
+const url = '/api/gigachat/chat/completions';
 
 export const fetchChatResponse = async (message: string) => {
-	const data = {
-		messages: [
-			{
-				content: message,
-				role: 'user',
-			},
-		],
-		model: 'deepseek-ai/DeepSeek-V3',
-		max_tokens: '1024',
-	}
+    const data = {
+        messages: [
+            {
+                role: 'user',
+                content: message,
+            },
+        ],
+        model: 'GigaChat:latest',
+        temperature: 1,
+        top_p: 0.1,
+        n: 1,
+        stream: false,
+        max_tokens: 512,
+        repetition_penalty: 1,
+        update_interval: 0,
+    };
+																								
+		const token = await fetchOAuthToken();
+		
 
-	const config = {
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	}
+    const config = {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token['access_token']}`, 
+        },
+    };
 
-	try {
-		const response = await axios.post(url, data, config)
-		return response.data
-	} catch (error) {
-		if (axios.isAxiosError(error)) {
-			console.error('Error response:', error.response)
-			console.error('Error message:', error.message)
-		} else {
-			console.error('Unexpected error:', error)
-		}
-		throw error
-	}
-}
+    try {
+        const response = await axios.post(url, data, config);
+				// console.log(response.data.choices[0].message.content);
+				
+				return response.data.choices[0].message.content
+    } catch (error) {
+			console.log('error');
+			
+        throw error; 
+    }
+};

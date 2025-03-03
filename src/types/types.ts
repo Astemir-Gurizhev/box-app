@@ -5,7 +5,7 @@ export interface QuestionButtonProps {
 }
 
 export interface QuestionListProps {
-	questions: string[]
+	questions: string[] 
 	loadingIndex: number | null
 	onQuestionClick: (index: number) => void
 	selectedQuestionIndex: number | null

@@ -6,10 +6,17 @@ export default defineConfig({
 	plugins: [react()],
 	server: {
 		proxy: {
-			'/api': {
-				target: 'https://api.blackbox.ai',
+			'/api/gigachat': {
+				target: 'https://gigachat.devices.sberbank.ru/',
 				changeOrigin: true,
-				rewrite: path => path.replace(/^\/api/, ''),
+				secure: false, 
+				rewrite: path => path.replace(/^\/api\/gigachat/, '/api/v1'), 
+			},
+			'/api/ngw': {
+				target: 'https://ngw.devices.sberbank.ru:9443',
+				changeOrigin: true,
+				secure: false, 
+				rewrite: path => path.replace(/^\/api\/ngw/, '/api/v2'),
 			},
 		},
 	},

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { TbProgressHelp } from 'react-icons/tb'
 import { fetchChatResponse } from '../../api/api'
-import { clearSymbols, russianRequest, task } from '../../data/data'
+import { clearSymbols, noInitial, russianRequest, task } from '../../data/data'
 import { Spinner } from '../../ui/spinner/Spinner'
 import { QuestionList } from '../question-list/QuestionList'
 import styles from './RequestForm.module.scss'
@@ -20,7 +20,8 @@ export const RequestForm = () => {
 		const data = await fetchChatResponse(
 			russianRequest +
 				clearSymbols +
-				'Представь, что ты учитель. Какие 3 не связанных друг с другом темы стоило бы предварительно дать изучить ученику по данной задаче и перечисли названия тем в виде массива [], где каждый ответ является элементом в виде строки "" и разделен запятыми без начального объяснения' +
+				'Ты учитель. Какие 3 связанных с задачей темы стоило бы предварительно дать изучить ученику. Перечисли эти темы в массиве, где каждая тема является элементом этого массива, в виде строки ""(компьютерные) и разделена запятыми. Пример вывода данных: ["компьютер", "телефон", "машина"] ' +
+				noInitial +
 				task
 		)
 
@@ -37,9 +38,9 @@ export const RequestForm = () => {
 
 		setLoadingIndex(index)
 
-		const question = textQuestion[index]
+		const question = JSON.parse(textQuestion)[index]
 		const data = await fetchChatResponse(
-			russianRequest + clearSymbols + 'дай пояснение' + question + '"'
+			russianRequest + clearSymbols + 'дай пояснение:' + question 
 		)
 
 		setTextResponse(prevResponses => {
@@ -53,7 +54,7 @@ export const RequestForm = () => {
 
 	return (
 		<div className={styles.container}>
-			<img className={styles.taskImg} src="/math.webp" alt="" />
+			<img className={styles.taskImg} src='/math.webp' alt='' />
 			<h2 className={styles.task}>{task}</h2>
 			<button
 				className={styles.btn}
