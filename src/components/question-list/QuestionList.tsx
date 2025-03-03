@@ -17,7 +17,7 @@ export const QuestionList = ({
                 ? JSON.parse(questions).map((item, i) => (
                     <div className={styles.question} key={i}>
                         <QuestionButton
-                            question={`Что такое ${item}?`}
+                            question={`${item}`}
                             isLoading={loadingIndex === i}
                             onClick={() => onQuestionClick(i)}
                         />

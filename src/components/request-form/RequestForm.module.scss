@@ -1,7 +1,7 @@
 .container {
 	margin-inline: 30px;
 	width: 1000px;
-	background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+	background: #e8d0ff;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s, box-shadow 0.3s;
 	padding: 20px;
@@ -10,6 +10,7 @@
 }
 .task {
 	margin-bottom: 20px;
+	color: #000;
 }
 .taskImg {
 	width: 200px;
