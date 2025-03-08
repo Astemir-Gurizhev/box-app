@@ -33,12 +33,8 @@ export const fetchChatResponse = async (message: string) => {
 
     try {
         const response = await axios.post(url, data, config);
-				// console.log(response.data.choices[0].message.content);
-				
 				return response.data.choices[0].message.content
     } catch (error) {
-			console.log('error');
-			
         throw error; 
     }
 };
